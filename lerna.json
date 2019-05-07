@@ -1,0 +1,4 @@
+{
+  "packages": ["lessons/*"],
+  "version": "0.1.0"
+}
