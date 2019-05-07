@@ -1,4 +1,4 @@
-# Lesson Two -- Loops and Array Methods
+# Lesson Two – Loops and Array Methods
 
 ## For Loops
 
@@ -41,7 +41,7 @@ to include `find` and `includes`, among others.
 
 ### ForEach
 
-ForEach simply interates over each object in function, but returns nothing. In effect, this is very similar to the 
+ForEach simply interates over each object in array, but returns nothing. In effect, this is very similar to the 
 loops above.
 
 ```javascript
@@ -52,7 +52,7 @@ planets.forEach(planet => {
 
 ### Map
 
-Map simply interates over each object in function, returning an array the same size as the original. This can be used 
+Map simply interates over each object in an array, returning an array the same size as the original. This can be used 
 to extract information or transform the items in the original array. 
 
 ```javascript
@@ -63,11 +63,52 @@ const names = planets.map(planet => {
 # ['ALDERAAN', 'HOTH', 'DAGOBAH'];
 ```
 
+### Filter
+
+Filter interates over each object in array, returning all items that pass a given test. Filter can be used to quickly 
+find items in an array using any criteria you choose. 
+
+```javascript
+const planets = [
+  { name: 'Alderaan', surface_water: 8 }, 
+  { name: 'Hoth', surface_water: 100 }, 
+  { name: 'Dagobah', surface_water: 8 }
+];
+
+const names = planets.filter((planet) => {
+  return planet.surface_water < 50;
+});
+
+[
+  { name: 'Alderaan', surface_water: 8 }, 
+  { name: 'Dagobah', surface_water: 8 }
+];
+```
+
+### Find
+
+Find interates over each object in array, returning the first items that pass a given test. Filter can be used to quickly 
+find items in an array using any criteria you choose. 
+
+```javascript
+const planets = [
+  { name: 'Alderaan', surface_water: 8 }, 
+  { name: 'Hoth', surface_water: 100 }, 
+  { name: 'Dagobah', surface_water: 8 }
+];
+
+const names = planets.find((planet) => {
+  return planet.surface_water > 50;
+});
+
+{ name: 'Hoth', surface_water: 100 };
+```
+
 ### Reduce
 
-Reduce interates over each object in function, returning an accumalated value. The starting value can be an Array, Object
+Reduce interates over each object in an array, returning an accumalated value. The starting value can be an Array, Object
 Number or even a String. This is a very powerful function, but can sometimes be a little confusing to use. It takes a 
-minimum of 2 arguments, the `accumulator` and the `item` from the array.a
+minimum of 2 arguments, the `accumulator` and the `item` from the array.
 
 ```javascript
 const planets = [
@@ -81,11 +122,9 @@ const names = planets.reduce((acc, planet) => {
   return acc;
 });
 
-// {
-//   Alderaan: 8 , 
-//   Hoth: 100 , 
-//   Dagobah: 8 
-// }
+{
+  Alderaan: 8 , 
+  Hoth: 100 , 
+  Dagobah: 8 
+}
 ```
-
-

@@ -1,4 +1,3 @@
-
 class Planets {
   public planets = [];
 
@@ -10,7 +9,7 @@ class Planets {
     return planet.name;
   }
 
-  showPlanets () {
+  showPlanetNames () {
     const self = this;
     self.planets.forEach(function (planet) {
       console.log(self.extractName(planet));
@@ -22,4 +21,5 @@ const list = new Planets([
   { name: 'Alderaan', surface_water: 8 },
   { name: 'Hoth', surface_water: 100 }
 ]);
-list.showPlanets();
+
+list.showPlanetNames();
