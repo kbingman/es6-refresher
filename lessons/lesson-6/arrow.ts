@@ -1,3 +1,5 @@
+// TODO Come up with another example
+
 class Planets {
   public planets = [];
 
@@ -23,3 +25,8 @@ const list = new Planets([
 ]);
 
 list.showPlanetNames();
+
+// Exercise 1
+// ================
+// Update the `showPlanetNames` method to use arrow functions
+//

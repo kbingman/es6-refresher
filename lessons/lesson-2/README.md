@@ -12,6 +12,11 @@ for (let i = 0; i++; i < length) {
   const p = planets[i];
   console.log(p);
 }
+
+// Output
+// Alderaan
+// Hoth
+// Dagobah
 ```
 
 ES6 introduced 2 new variants of the classic `for` loop: ` for...in` and `for...of`.
@@ -20,6 +25,8 @@ which represents the index of the base array. Objects within the array need to b
 just as with the standard for loop.
 
 ```javascript
+const planets = ['Alderaan', 'Hoth', 'Dagobah'];
+
 for (let i in planets) {
   console.log(planets[i]);
 }
@@ -29,9 +36,16 @@ The `for ... of` loop is very similar to the `for ... in` loop, but instead of a
 index, a variable is returned representing the object itself. 
 
 ```javascript
+const planets = ['Alderaan', 'Hoth', 'Dagobah'];
+
 for (let planet of planets) {
   console.log(planet);
 }
+
+// Output
+// Alderaan
+// Hoth
+// Dagobah
 ```
 
 ## Array Methods
@@ -45,6 +59,8 @@ ForEach simply interates over each object in array, but returns nothing. In effe
 loops above.
 
 ```javascript
+const planets = ['Alderaan', 'Hoth', 'Dagobah'];
+
 planets.forEach(planet => {
   console.log(planet);
 });
@@ -56,11 +72,14 @@ Map simply interates over each object in an array, returning an array the same s
 to extract information or transform the items in the original array. 
 
 ```javascript
+const planets = ['Alderaan', 'Hoth', 'Dagobah'];
+
 const names = planets.map(planet => {
   return planet.toUpperCase();
 });
 
-# ['ALDERAAN', 'HOTH', 'DAGOBAH'];
+// Output
+// ['ALDERAAN', 'HOTH', 'DAGOBAH'];
 ```
 
 ### Filter
@@ -79,10 +98,11 @@ const names = planets.filter((planet) => {
   return planet.surface_water < 50;
 });
 
-[
-  { name: 'Alderaan', surface_water: 8 }, 
-  { name: 'Dagobah', surface_water: 8 }
-];
+// Output
+// [
+//   { name: 'Alderaan', surface_water: 8 }, 
+//   { name: 'Dagobah', surface_water: 8 }
+// ];
 ```
 
 ### Find
@@ -101,7 +121,8 @@ const names = planets.find((planet) => {
   return planet.surface_water > 50;
 });
 
-{ name: 'Hoth', surface_water: 100 };
+// Output
+// { name: 'Hoth', surface_water: 100 };
 ```
 
 ### Reduce
@@ -122,9 +143,10 @@ const names = planets.reduce((acc, planet) => {
   return acc;
 });
 
-{
-  Alderaan: 8 , 
-  Hoth: 100 , 
-  Dagobah: 8 
-}
+// Output
+// {
+//   Alderaan: 8 , 
+//   Hoth: 100 , 
+//   Dagobah: 8 
+// }
 ```
