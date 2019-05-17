@@ -1,4 +1,4 @@
-# Lesson Three - Promises
+# Lesson Four - Promises
 
 ## What is a Promise?
 

@@ -7,8 +7,10 @@ const API = 'https://swapi.co/api';
 // Create a Promise than fetches a list of Planets from the SWAPI,
 // then logs each planet name
 
-const fetchPlanets = () => {
-  return fetch(`${API}/planets`).then(r => r.json());
+const fetchPlanets = async () => {
+  const response = await fetch(`${API}/planets`);
+  const json = await response.json();
+  return json();
 };
 
 // fetchPlanets().then(results => console.log(results));
@@ -16,23 +18,30 @@ const fetchPlanets = () => {
 // Exercise 2 - Catching Errors with `.catch`
 // ================================
 // Add error handling that logs out any potential errors using `.catch`
-const fetchPlanetsWithError = () => {
-  return fetch(`${API}/planets`).then(r => r.json()).catch(err => console.log(err));
+const fetchPlanetsWithError = async () => {
+  try {
+    const response = await fetch(`${API}/planets`);
+    const json = await response.json();
+    return json();
+  } catch (err) {
+    return err;
+  }
 };
 
 // Exercise 3 - Executing Sequential Promises with chaining
 // ================================
 // Fetch first a person, then some data associated with that person, 
 // their planet, starship, or any films assoicated with them and display both
-const fetchPersonAndHomeWorld = () => {
-  return fetch(`${API}/people/1`)
-    .then(r => r.json())
-    .then(person => {
-       return fetch(person.homeworld).then(r => r.json()).then(planet => {
-         return { person, planet};
-       });
-    })
-    .catch(err => console.log(err));
+const fetchPersonAndHomeWorld = async () => {
+  try {
+    const person = await fetch(`${API}/people/1`).then(r => r.json())
+    const planet = await fetch(person.homeworld);
+
+    return { person, planet};
+  } catch (err) {
+    console.log(err);
+    return { error: err.message }
+  }
 };
 
 // fetchPersonAndHomeWorld().then(results => console.log(results));
@@ -41,31 +50,37 @@ const fetchPersonAndHomeWorld = () => {
 // ================================
 // Fetch a list of all endpoints, then use `Promise.all` to fetch each 
 // endpoint simultaneously
-const fetchAllData = () => {
+const fetchAllData = async () => {
   const jobs = [ 
     fetch(`${API}/people`).then(r => r.json()), 
     fetch(`${API}/planets`).then(r => r.json())
   ];
-  return Promise.all(jobs).catch(err => console.log(err));
+  try {
+    const results = await Promise.all(jobs);
+    return results;
+  } catch (err) {
+    return { error: err.message }
+  }
 };
 
-// fetchAllData().then(results => console.log(results));
+// console.log(fetchAllData())
 
 // Exercise 5 - Executing Sequential Promises with `for` loops
 // ================================
 // Fetch a list of all endpoints, then use `for loop` to fetch each 
 // endpoint sequentially
-const fetchLoopedData = () => {
-  const jobs = [ 
-    fetch(`${API}/people`).then(r => r.json()), 
-    fetch(`${API}/planets`).then(r => r.json())
+const fetchLoopedData = async () => {
+  const urls = [ 
+    `${API}/people`, 
+    `${API}/planets`
   ];
 
   const results = [];
-  for (let job of jobs) {
-    job.then(json => results.push(json));       
-/bin/bash: :qa: command not found
-  console.log(results);
+  for (let url of urls) {
+    let result = await fetch(url).then(r => r.json());
+    results.push(result);       
+  }
   return results;
 };
-fetchLoopedData();
+
+fetchLoopedData().then(results => console.log(results));
