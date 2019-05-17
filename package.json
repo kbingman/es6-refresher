@@ -11,13 +11,10 @@
   "author": "keith@keithbingman.com",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^24.0.12",
     "lerna": "^3.13.4",
     "jest": "^24.8.0",
     "node-fetch": "^2.5.0",
-    "puppeteer": "^1.15.0",
     "ts-jest": "^24.0.2"
-  },
-  "dependencies": {
-    "@types/jest": "^24.0.12"
   }
 }
