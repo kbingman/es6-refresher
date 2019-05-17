@@ -141,7 +141,7 @@ const planets = [
 const names = planets.reduce((acc, planet) => {
   acc[planet.name] = planet.surface_water;  
   return acc;
-});
+}, {});
 
 // Output
 // {
