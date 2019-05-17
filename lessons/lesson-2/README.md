@@ -8,7 +8,7 @@ common to many programming languages.
 ```javascript
 const planets = ['Alderaan', 'Hoth', 'Dagobah'];
 
-for (let i = 0; i++; i < length) {
+for (let i = 0; i < length; i++) {
   const p = planets[i];
   console.log(p);
 }
